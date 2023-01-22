@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:provider/provider.dart';
+
+import '../../../providers/auth_provider.dart';
 
 
 class VerifyPage extends StatefulWidget {
@@ -39,6 +42,8 @@ class _VerifyPageState extends State<VerifyPage> {
     double topHeight = MediaQuery.of(context).size.height * 0.3;
     double totalHeight = MediaQuery.of(context).size.height;
     double totalWidth = MediaQuery.of(context).size.width;
+    final authProvider = Provider.of<AuthProvider>(context);
+
 
     return Scaffold(
         resizeToAvoidBottomInset:false,
@@ -154,7 +159,7 @@ class _VerifyPageState extends State<VerifyPage> {
                                                     color: Color(0xFC080D0C)
                                                 ),
 
-                                                length: 4,
+                                                length: 6,
                                                 obscureText:
                                                 true,
                                                 obscuringCharacter:
@@ -190,7 +195,7 @@ class _VerifyPageState extends State<VerifyPage> {
                                                   fieldHeight:
                                                   60,
                                                   fieldWidth:
-                                                  60,
+                                                  40,
                                                   activeFillColor:
                                                   const Color.fromRGBO(8, 143, 129, 0.08)                                                ,
                                                 ),
@@ -236,7 +241,7 @@ class _VerifyPageState extends State<VerifyPage> {
                                         ),
                                       ),
                                       Text(
-                                        "OTP sent to $phone",style: TextStyle(color:  Color(0xFC080D0C)),),
+                                        "OTP sent to ${authProvider.phoneNumber}",style: TextStyle(color:  Color(0xFC080D0C)),),
                                       SizedBox(height: 10,),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
@@ -273,9 +278,12 @@ class _VerifyPageState extends State<VerifyPage> {
                                   elevation:
                                   MaterialStateProperty.all<double>(20),
                                 ),
-                                onPressed: () {
-                                  // formKey.currentState?.save();
-                                  Navigator.pushNamed(context, 'login');
+                                onPressed: () async {
+                                  formKey.currentState?.save();
+                                  print("jjjj "+ currentText);
+
+                                  await authProvider.verifyCode(context,currentText);
+                                  timer!.cancel();
                                 },
                                 child: Text(
                                   'Login',

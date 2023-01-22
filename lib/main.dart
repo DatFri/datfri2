@@ -1,20 +1,39 @@
 
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:bay/features/auth/pages/verify_phone.dart';
+import 'package:bay/features/home/pages/home.dart';
+import 'package:bay/providers/auth_provider.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'features/auth/pages/login_phone.dart';
 import 'features/dashboard/pages/dashboard.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(
-    // DevicePreview( builder: (BuildContext context)=>
-    const MyApp()
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => AuthProvider()),
+          // ChangeNotifierProvider(create: (context) => AppointmentProvider()),
+          // ChangeNotifierProvider(create: (context) => BlogProvider()),
 
-     );
+        ],
+        child:   const MyApp())
+        //DevicePreview( builder: (BuildContext context)=>
+       ,
+      );
+
+
+
 }
 const MaterialColor black = const MaterialColor(
   0xFF070606,
@@ -55,7 +74,8 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.black),
     routes: {
         'verify' : (context)=> VerifyPage(),
-      'login' : (context)=> DashboardPage()
+      'login' : (context)=> DashboardPage(),
+      "home" : (context) => DashboardPage(),
 
     },
     );

@@ -1,7 +1,11 @@
 
+import 'package:bay/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:provider/provider.dart';
+
+import '../../../providers/auth_provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -22,6 +26,10 @@ class _LoginPageState extends State<LoginPage> {
     double topHeight = MediaQuery.of(context).size.height*0.3;
     double totalHeight = MediaQuery.of(context).size.height;
     double totalWidth = MediaQuery.of(context).size.width;
+
+    final authProvider = Provider.of<AuthProvider>(context);
+
+
     return Scaffold(
       // resizeToAvoidBottomInset:false,
       body:SizedBox(
@@ -141,6 +149,7 @@ class _LoginPageState extends State<LoginPage> {
 
                                               onInputChanged: (PhoneNumber number) {
                                                 print(number.phoneNumber);
+                                                phone = number.phoneNumber!;
                                               },
                                               onInputValidated: (bool value) {
                                                 print(value);
@@ -159,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                                               keyboardType:
                                               TextInputType.numberWithOptions(signed: true, decimal: true),
                                               onSaved: (PhoneNumber number) {
-                                                print('On Saved: $number');
+                                                // print('On Saved: $number');
                                               },
                                             ),
                                           ),
@@ -202,18 +211,24 @@ class _LoginPageState extends State<LoginPage> {
                                     elevation: MaterialStateProperty.all<double>(20),
 
                                   ),
-                                  onPressed: () {
+                                  onPressed: () async {
                                     // formKey.currentState?.save();
-                                    Navigator.pushNamed(context, 'verify');
-                                  },
+                                    formKey.currentState?.save();
+                                    await authProvider.verifyPhone(phone,context);
+                                    authProvider.setPhone(phone);
+                                    Navigator.pushNamed(context, 'verify');                                  },
                                   child: Text('Get OTP',),
 
                                 ),
                               ),
                               TextButton(
-                                  onPressed: () {
-                                    formKey.currentState?.save();
-                                    Navigator.pushNamed(context, 'verify');
+                                  onPressed: ()  {
+                                    // formKey.currentState?.save();
+                                    // Auth auth = Auth();
+                                    // await auth.verifyPhone(number.toString(),context);
+                                    // print("hiiii" + number.toString());
+                                    // authProvider.setPhone(number.toString());
+                                    // Navigator.pushNamed(context, 'verify');
 
                                   },
                                   child: const Padding(

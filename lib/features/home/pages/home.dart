@@ -7,23 +7,28 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Stack(
+      child: Column(
         children: [
           Container(
 
-            height: 300,
+            height: MediaQuery.of(context).size.height*0.3,
 
             decoration: BoxDecoration(
                 color: Colors.black,
-              borderRadius: BorderRadius.circular(20)
+
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20)
+              )
             ),
           ),
-          Container(
-            // decoration: BoxDecoration(
-            //     color: Colors.red,
-            //     borderRadius: BorderRadius.circular(20)
-          )
-
+    //       Container(
+    //
+    //         decoration: BoxDecoration(
+    //             color: Colors.red,
+    //             borderRadius: BorderRadius.circular(20)
+    //       )
+    // )
 
 ]
     ));

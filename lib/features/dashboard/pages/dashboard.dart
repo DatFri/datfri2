@@ -14,6 +14,9 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body:PersistentTabView(
+        decoration:NavBarDecoration(
+          borderRadius: BorderRadius.circular(20)
+        ),
         backgroundColor:CupertinoColors.black,
        context,
        screens: [

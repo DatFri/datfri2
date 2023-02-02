@@ -7,8 +7,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // padding: EdgeInsets.fromLTRB(10, 0, 20, 0),
       child: Column(
         children: [
+          // SizedBox(
+          //   height: 10,
+          // ),
           Container(
 
             height: MediaQuery.of(context).size.height*0.3,
@@ -17,8 +21,11 @@ class HomePage extends StatelessWidget {
                 color: Colors.black,
 
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20)
+                // topRight: Radius.circular(20),
+                bottomLeft: Radius.elliptical(150, 30),
+                // bottomRight: Radius.circular(20)
+                bottomRight: Radius.elliptical(150, 30),
+
               )
             ),
           ),

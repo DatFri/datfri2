@@ -27,9 +27,10 @@ Future<void> main() async {
           // ChangeNotifierProvider(create: (context) => BlogProvider()),
 
         ],
-        child:   const MyApp())
-        //DevicePreview( builder: (BuildContext context)=>
-       ,
+        child:
+        // const MyApp())
+        DevicePreview( builder: (BuildContext context)=>const MyApp()))
+
       );
 
 
@@ -63,12 +64,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: black
       ),
+
+
       home: AnimatedSplashScreen(
           duration: 2000,
           splash: Container(
 
             child: Image.asset('assets/logo_black.jpg'),),
-          nextScreen: LoginPage(),
+          nextScreen: DashboardPage(),
           splashTransition: SplashTransition.rotationTransition,
           splashIconSize: 200,
           backgroundColor: Colors.black),

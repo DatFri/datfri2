@@ -13,29 +13,32 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:PersistentTabView( context,
+      body:PersistentTabView(
+        backgroundColor:CupertinoColors.black,
+       context,
        screens: [
-        HomePage(),
+         HomePage(),
          HistoryPage(),
          ProfilePage()
 
       ],
         items: <PersistentBottomNavBarItem>[
           PersistentBottomNavBarItem(
-            activeColorPrimary: Colors.brown,
-              inactiveColorPrimary: Colors.black,
+
+              activeColorPrimary: Colors.grey,
+              inactiveColorPrimary: Colors.white,
 
               title: 'Home',
               icon: Icon(Icons.home_outlined)),
           PersistentBottomNavBarItem(
-              activeColorPrimary: Colors.brown,
-              inactiveColorPrimary: Colors.black,
+              activeColorPrimary: Colors.grey,
+              inactiveColorPrimary: Colors.white,
 
               title: 'History',
               icon: Icon(Icons.history_outlined)),
           PersistentBottomNavBarItem(
-              activeColorPrimary: Colors.brown,
-              inactiveColorPrimary: Colors.black,
+              activeColorPrimary: Colors.grey,
+              inactiveColorPrimary: Colors.white,
               title: 'Profile',
               icon: Icon(Icons.account_circle_outlined)),
 

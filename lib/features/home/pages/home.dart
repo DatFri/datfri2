@@ -6,38 +6,49 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    var widthSize = MediaQuery.of(context).size.width;
+    return Scaffold(
       // padding: EdgeInsets.fromLTRB(10, 0, 20, 0),
-      child: Column(
-        children: [
-          // SizedBox(
-          //   height: 10,
-          // ),
-          Container(
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
 
-            height: MediaQuery.of(context).size.height*0.3,
+              Container(
+                  child: Center(
+                    child: Text('Good Afternoon Emmilly',style: TextStyle(fontSize: 20,color: Colors.white),),
+                  ),
+                width: MediaQuery.of(context).size.width,
 
-            decoration: BoxDecoration(
-                color: Colors.black,
+                height: MediaQuery.of(context).size.height*0.15,
+                decoration: BoxDecoration(
+                    color: Colors.black,
 
-              borderRadius: BorderRadius.only(
-                // topRight: Radius.circular(20),
-                bottomLeft: Radius.elliptical(150, 30),
-                // bottomRight: Radius.circular(20)
-                bottomRight: Radius.elliptical(150, 30),
+                  borderRadius: BorderRadius.only(
+                    // topRight: Radius.circular(20),
+                    bottomLeft: Radius.elliptical(275, 30),
+                    // bottomRight: Radius.circular(20)
+                    bottomRight: Radius.elliptical(275, 30),
 
-              )
-            ),
-          ),
-    //       Container(
-    //
-    //         decoration: BoxDecoration(
-    //             color: Colors.red,
-    //             borderRadius: BorderRadius.circular(20)
-    //       )
-    // )
+                  )
+                ),
+
+              ),
+            SizedBox(height: 10,),
+            Container(
+              height: 200,
+               width: widthSize,
+               child: Text('hi'),
+              decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(20)
+            )
+    )
 
 ]
-    ));
+    ),
+        ),
+      ));
   }
 }

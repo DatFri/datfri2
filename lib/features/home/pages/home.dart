@@ -11,13 +11,13 @@ class HomePage extends StatelessWidget {
       // padding: EdgeInsets.fromLTRB(10, 0, 20, 0),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(20),
+          // padding: EdgeInsets.all(20),
           child: Column(
             children: [
 
               Container(
                   child: Center(
-                    child: Text('Good Afternoon Emmilly',style: TextStyle(fontSize: 20,color: Colors.white),),
+                    child: Text('Good Afternoon',style: TextStyle(fontSize: 20,color: Colors.white),),
                   ),
                 width: MediaQuery.of(context).size.width,
 

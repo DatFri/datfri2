@@ -28,8 +28,8 @@ Future<void> main() async {
 
         ],
         child:
-        const MyApp())
-        // DevicePreview( builder: (BuildContext context)=>const MyApp()))
+        // const MyApp())
+        DevicePreview( builder: (BuildContext context)=>const MyApp()))
 
       );
 }

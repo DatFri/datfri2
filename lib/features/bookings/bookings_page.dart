@@ -23,7 +23,7 @@ class _BookingsPageState extends State<BookingsPage>with TickerProviderStateMixi
   late TabController tabController;
   @override
   void initState() {
-    tabController = new TabController(length: 3, vsync: this);
+    tabController = new TabController(length: 2, vsync: this);
     super.initState();
   }
   @override
@@ -57,7 +57,7 @@ class _BookingsPageState extends State<BookingsPage>with TickerProviderStateMixi
                     tabs:[
                       Tab(text: "Active",),
                       Tab(text: "Finished",),
-                      Tab(text: "Cancelled",),
+                      // Tab(text: "Cancelled",),
                     ]
 
                 ),
@@ -70,7 +70,7 @@ class _BookingsPageState extends State<BookingsPage>with TickerProviderStateMixi
                         UpcomingView(),
                         FinishedView(),
 
-                        CancelledView(),
+                        // CancelledView(),
                       ]
                   )
               ),

@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
           splash: Container(
 
             child: Image.asset('assets/logo_black.jpg'),),
-          nextScreen: FirebaseAuth.instance.currentUser != null ? DashboardPage():LoginPage(),
+          nextScreen: LocationPage(),
           splashTransition: SplashTransition.rotationTransition,
           splashIconSize: 200,
           backgroundColor: Colors.black),

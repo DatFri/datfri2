@@ -39,7 +39,7 @@ class Auth {
       codeSent: (String verificationId, int? resendToken) async {
         Vcode = verificationId;
         resendToken = resendToken;
-        print('dddddddddddddddddddddddd$verificationId');
+        // print('dddddddddddddddddddddddd$verificationId');
 
         Navigator.pop(context);
         Navigator.pushNamed(context, 'verify');
@@ -49,13 +49,13 @@ class Auth {
       codeAutoRetrievalTimeout: (String verificationId) {},
 
     );
-    print('dddddddddddddddddddddddd$Vcode');
+    // print('dddddddddddddddddddddddd$Vcode');
     return Vcode;
 
   }
 
   Future<void> verifyCode(context, String code , String smsCode, Users user) async {
-   print('ttttttttttttt${Vcode}----$smsCode -----${user.phone}');
+   // print('ttttttttttttt${Vcode}----$smsCode -----${user.phone}');
     showDialog(context: context,barrierDismissible: false,
         builder: (context) => const Center(child: CircularProgressIndicator()));
     try{
@@ -67,7 +67,7 @@ class Auth {
     .then(
     (value) => postDetailsToFirestore(user,context) )
         .catchError((e)=>BotToast.showText(text: "$e"));
-      Navigator.pushNamedAndRemoveUntil(context, "location", (route) => false);
+      Navigator.pushNamedAndRemoveUntil(context, "home", (route) => false);
     }catch(e){
      print("Wrong Otp");
     }
@@ -80,7 +80,7 @@ class Auth {
     users.uid = user!.uid;
 
 
-    Navigator.pushNamedAndRemoveUntil(context, "location", (route) => false);
+    Navigator.pushNamedAndRemoveUntil(context, "home", (route) => false);
 
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     // box1.put('userid', user!.uid);

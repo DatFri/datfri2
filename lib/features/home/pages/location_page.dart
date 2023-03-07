@@ -14,6 +14,7 @@ import 'package:provider/provider.dart';
 import '../../../keys.dart';
 import '../../../providers/auth_provider.dart';
 import '../../../providers/places_provider.dart';
+import '../../auth/pages/login_phone.dart';
 import '../../dashboard/pages/dashboard.dart';
 import '../../dashboard/pages/dashboard_page.dart';
 import '../../palette.dart';
@@ -130,7 +131,7 @@ class _LocationPageState extends State<LocationPage> {
                   child: Container(
                     padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                     child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.2,
@@ -141,7 +142,7 @@ class _LocationPageState extends State<LocationPage> {
                         Row(
                           children: [
                             Text('Hello, Welcome to ',style: TextStyle(fontSize: 20),),
-                            Text('DatFri' ,style: TextStyle(color: Palette.primaryDartfri,fontSize: 20),)
+                            Text('Datfri' ,style: TextStyle(color: Palette.primaryDartfri,fontSize: 20),)
                           ],
                         ),
                         SizedBox(
@@ -160,17 +161,15 @@ class _LocationPageState extends State<LocationPage> {
                                   45), // fromHeight use double.infinity as width and 40 is the height
                             ),
                             onPressed: () async {
-                              setState(() {
-                                loading = true;
-                              });
-                              try{
+
+
                                 await _getCurrentPosition();
+                                   setState(() {
+                                     loading = false;
+                                   });
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>(FirebaseAuth.instance.currentUser != null) ? DashboardPage() :LoginPage()));
 
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DashboardPage()));
 
-                              }catch(e){
-                                BotToast.showText(text:'$e');
-                              }
 
                             },
                             child:  Text(

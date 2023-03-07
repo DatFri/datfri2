@@ -89,8 +89,8 @@ class _AppointmentCardState extends State<AppointmentCard> {
                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
 
-                  (widget.action == 'cancel') ? Appointment_button(title:"Reschedule",appointment:widget.appointment):Container(),
-                  (widget.action == 'active') ? Appointment_button(title:"Cancel Appointment",appointment:widget.appointment):Container(),
+                  // (widget.action == 'cancel') ? Appointment_button(title:"Reschedule",appointment:widget.appointment):Container(),
+                  (widget.action == 'active') ? Appointment_button(title:"Reschedule",appointment:widget.appointment):Container(),
                   (widget.appointment.paid == false && widget.action == 'active') ? Appointment_button(title:"PAY",appointment:widget.appointment):Container(),
 
                 ],

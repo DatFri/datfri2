@@ -35,7 +35,7 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
   DateTime date = DateTime(2023);
 
   List<String> kind = ['Motocycle','Car(Small)','PickUp/Van','Bus/Truck','BigTrucks'];
-  List<String> type = ['Interior','Exterior'];
+  List<String> type = ['Interior','Exterior','Both'];
   int _currentStep = 0;
 
 
@@ -316,15 +316,13 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
                           Step(
                             title: new Text('Wash'),
                             content: SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.2,
+                              height: MediaQuery.of(context).size.height * 0.3,
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
 
                                   Text("2. Which king of wash Interior or Exterior ?",style:TextStyle(fontWeight: FontWeight.w600,fontSize:17 ),),
-                                  Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    child: Row(
-                                      children: [
+
                                         Expanded(
                                           child: RadioListTile(
                                             value: 1,
@@ -348,7 +346,6 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
                                             selected: true,
                                           ),
                                         ),
-
                                         Expanded(
                                           child: RadioListTile(
                                             value: 2,
@@ -372,10 +369,31 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
                                             selected: false,
                                           ),
                                         ),
+                                        Expanded(
+                                          child: RadioListTile(
+                                            value: 3,
+                                            groupValue: selectedRadioTile2,
+                                            title: Text("Both"),
+                                            contentPadding: EdgeInsets.all(0),
+                                            dense: true,
+
+                                            // subtitle: Text("Radio 2 Subtitle"),
+                                            onChanged: (val) {
+                                              print("Radio Tile pressed $val");
+                                              setSelectedRadioTile2(val!);
+                                            },
+                                            activeColor: Palette.primaryDartfri,
+                                            // secondary: OutlineButton(
+                                            //   child: Text("Say Hi"),
+                                            //   onPressed: () {
+                                            //     print("Say Hello");
+                                            //   },
+                                            // ),
+                                            selected: false,
+                                          ),
+                                        ),
                                 ],
                               ),
-                                  )]
-                                  ),
                             ),
                             isActive: _currentStep >= 0,
                             state: _currentStep >= 1 ?

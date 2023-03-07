@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
   String initialCountry = 'UG';
   PhoneNumber number = PhoneNumber(isoCode: 'UG');
   String phone = "77 303 4565";
-
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       // resizeToAvoidBottomInset:false,
-      body:SizedBox(
+      body: SizedBox(
 
           height: totalHeight ,
 
@@ -222,14 +222,11 @@ class _LoginPageState extends State<LoginPage> {
 
                                       ),
                                       onPressed: () async {
-                                        try{
+
+
                                           await login(authProvider);
 
-                                        }catch(e){
-                                        Navigator.pop(context);
-
-                                        }
-                                                                        },
+                                                                       },
                                       child: Text('Get OTP',),
 
                                     ),

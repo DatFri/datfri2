@@ -1,12 +1,14 @@
-import 'package:dartfri/features/screens/appointment/models/appointment.dart';
-import 'package:dartfri/features/screens/dashboard/dashboard_page.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:status_alert/status_alert.dart';
 
 import '../../../../providers/appointment_provider.dart';
-import '../../../../providers/user_provider.dart';
+import '../../../providers/auth_provider.dart';
+import '../../appointment/models/appointment.dart';
+import '../../dashboard/pages/dashboard.dart';
+import '../../dashboard/pages/dashboard_page.dart';
 import '../../notifications/models/notifications.dart';
 class PhoneInput extends StatelessWidget {
   PhoneInput ({Key? key, required this.appointment}) : super(key: key);
@@ -16,7 +18,7 @@ TextEditingController _textFieldController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final appointmentProvider = Provider.of<AppointmentProvider>(context);
-    final user = Provider.of<UserProvider>(context);
+    final user = Provider.of<AuthProvider>(context);
 
     return AlertDialog(
     title: Text('Enter PIN'),

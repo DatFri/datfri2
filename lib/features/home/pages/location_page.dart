@@ -1,7 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
-import '../../../../../bay2/lib/features/pageImports.dart';
-import 'package:dartfri/features/screens/dashboard/dashboard_page.dart';
-import 'package:dartfri/features/screens/home/data.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +12,12 @@ import 'package:google_maps_webservice/places.dart';
 import 'package:provider/provider.dart';
 
 import '../../../keys.dart';
+import '../../../providers/auth_provider.dart';
 import '../../../providers/places_provider.dart';
-import '../../../providers/user_provider.dart';
-import '../nearby_places/pages/nearby_places.dart';
-import '../wallet/pages/wallet_page.dart';
+import '../../dashboard/pages/dashboard.dart';
+import '../../dashboard/pages/dashboard_page.dart';
+import '../../palette.dart';
+
 
 class LocationPage extends StatefulWidget {
    LocationPage({Key? key}) : super(key: key);
@@ -35,7 +35,7 @@ class _LocationPageState extends State<LocationPage> {
   Widget build(BuildContext context) {
 
     final places = Provider.of<PlacesProvider>(context);
-    final users = Provider.of<UserProvider>(context);
+    final users = Provider.of<AuthProvider>(context);
 
 
     Future<bool> _handleLocationPermission() async {
@@ -112,20 +112,20 @@ class _LocationPageState extends State<LocationPage> {
                     ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(10, 0, 30, 0),
-                  height: 100,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                          height: 130,width: 130,
-                          child: Image.asset('assets/logo_noback.png')),
-                      // Icon(CupertinoIcons.bell,size: 30,color: Palette.primaryDartfri,)
-
-                    ],
-                  ),
-                ),
+                // Container(
+                //   padding: EdgeInsets.fromLTRB(10, 0, 30, 0),
+                //   height: 100,
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     children: [
+                //       SizedBox(
+                //           height: 130,width: 130,
+                //           child: Image.asset('assets/logo_black.jpg')),
+                //       // Icon(CupertinoIcons.bell,size: 30,color: Palette.primaryDartfri,)
+                //
+                //     ],
+                //   ),
+                // ),
                 SingleChildScrollView(
                   child: Container(
                     padding: EdgeInsets.fromLTRB(20, 10, 20, 10),

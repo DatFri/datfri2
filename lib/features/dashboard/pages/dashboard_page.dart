@@ -1,14 +1,16 @@
-import 'package:dartfri/features/screens/account/account_page.dart';
-import 'package:dartfri/features/screens/home/home_new_page.dart';
-import 'package:dartfri/features/screens/notifications/pages/notification_page.dart';
-import 'package:dartfri/features/screens/wallet/pages/wallet_page.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
-import '../account/pages/profile_page.dart';
-import '../bookings/bookings_page.dart';
+import '../../bookings/bookings_page.dart';
+import '../../home/pages/home.dart';
+import '../../home/pages/new_home.dart';
+import '../../notifications/pages/notification_page.dart';
+import '../../profile/pages/profile.dart';
+import '../../wallet/pages/wallet_page.dart';
+
 
 class DashboardPage extends StatefulWidget {
 
@@ -27,7 +29,7 @@ class _DashboardPageState extends State<DashboardPage> {
       body:  IndexedStack(
           children: [
             BookingsPage(),
-            HomeNewPage(),
+            HomePage(),
             WalletPage(),
             NotificationPage(),
             ProfilePage()

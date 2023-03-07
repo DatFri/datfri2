@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:alt_sms_autofill/alt_sms_autofill.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
-
+import 'package:sms_autofill/sms_autofill.dart';
 import '../../../providers/auth_provider.dart';
 
 
@@ -16,7 +18,7 @@ class VerifyPage extends StatefulWidget {
 }
 
 class _VerifyPageState extends State<VerifyPage> {
-  TextEditingController textEditingController = TextEditingController();
+  late TextEditingController textEditingController;
   bool isVerified = false;
   bool canResend = false;
   Timer? timer;
@@ -29,14 +31,44 @@ class _VerifyPageState extends State<VerifyPage> {
   String time = "00:59";
   int seconds = 00;
 
+
+
+  final formKey = GlobalKey<FormState>();
+
+  String _comingSms = 'Unknown';
+
+  Future<void> initSmsListener() async {
+
+    String? comingSms;
+    try {
+      comingSms = await AltSmsAutofill().listenForSms;
+    } on PlatformException {
+      comingSms = 'Failed to get Sms.';
+    }
+    if (!mounted) return;
+    setState(() {
+      _comingSms = comingSms!;
+      print("====>Message: ${_comingSms}");
+      print("${_comingSms[0]}");
+      textEditingController.text = _comingSms[0] + _comingSms[1] + _comingSms[2] + _comingSms[3]
+          + _comingSms[4] + _comingSms[5]; //used to set the code in the message to a string and setting it to a textcontroller. message length is 38. so my code is in string index 32-37.
+    });
+  }
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     startTimer();
+    textEditingController = TextEditingController();
+       initSms();
+    initSmsListener();
   }
-
-  final formKey = GlobalKey<FormState>();
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    AltSmsAutofill().unregisterListener();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     double topHeight = MediaQuery.of(context).size.height * 0.3;
@@ -50,25 +82,7 @@ class _VerifyPageState extends State<VerifyPage> {
         body: SizedBox(
             height: totalHeight,
             child: Stack(children: [
-              Container(
-                decoration: const BoxDecoration(
-                  // color: Colors.transparent,
-                  color: Color(0xFC080D0C),
 
-                  image: DecorationImage(
-
-                    image: AssetImage("assets/logo_black.jpg"),
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                height: totalHeight*0.32,
-
-                // color: Colors.brown,
-
-              ),
-              Container(
-                color: const Color(0xF7070908).withOpacity(0.3),
-              ),
               SizedBox(
                 height: totalHeight,
                 child: Column(
@@ -320,5 +334,10 @@ class _VerifyPageState extends State<VerifyPage> {
         myDuration = Duration(seconds: seconds);
       }
     });
+  }
+
+  Future<void> initSms() async {
+    await SmsAutoFill().listenForCode();
+
   }
 }

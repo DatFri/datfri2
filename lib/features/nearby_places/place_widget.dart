@@ -1,8 +1,7 @@
 
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dartfri/features/pageImports.dart';
-import 'package:dartfri/features/screens/appointment/pages/appointment_page.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -10,7 +9,8 @@ import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../providers/places_provider.dart';
-import '../../../providers/user_provider.dart';
+import '../../providers/auth_provider.dart';
+import '../appointment/pages/appointment_page.dart';
 import 'models/place.dart';
 
 class PlaceWidget extends StatelessWidget {
@@ -23,7 +23,7 @@ class PlaceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final places = Provider.of<PlacesProvider>(context);
-    final user = Provider.of<UserProvider>(context);
+    final user = Provider.of<AuthProvider>(context);
 
     return GestureDetector(
       onTap: (){

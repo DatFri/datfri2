@@ -1,6 +1,7 @@
-import 'package:dartfri/features/screens/appointment/models/appointment.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../appointment/models/appointment.dart';
 
 class PaymentPage extends StatelessWidget {
   const PaymentPage({Key? key, required this.appointment}) : super(key: key);

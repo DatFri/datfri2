@@ -1,6 +1,5 @@
-import 'package:dartfri/features/pageImports.dart';
-import 'package:dartfri/features/screens/appointment/pages/review_appointment.dart';
-import 'package:dartfri/features/screens/bookings/bookings_page.dart';
+
+import 'package:bay/features/appointment/pages/review_appointment.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -8,8 +7,9 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../providers/appointment_provider.dart';
-import '../../../../providers/user_provider.dart';
+import '../../../providers/auth_provider.dart';
 import '../../nearby_places/models/place.dart';
+import '../../palette.dart';
 import '../models/appointment.dart';
 
 
@@ -98,7 +98,7 @@ class _AppointmentFormPageState extends State<AppointmentFormPage> {
   Widget build(BuildContext context) {
 
     final appointmentProvider = Provider.of<AppointmentProvider>(context);
-    final userProvider = Provider.of<UserProvider>(context);
+    final userProvider = Provider.of<AuthProvider>(context);
     appointment.userId = userProvider.user.uid;
 
     tapped(int step){

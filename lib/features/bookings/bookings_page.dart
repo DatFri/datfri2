@@ -1,13 +1,14 @@
 
-import 'package:dartfri/features/pageImports.dart';
-import 'package:dartfri/features/screens/bookings/widgets/appoint_card.dart';
+
+import 'package:bay/features/bookings/widgets/appoint_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/appointment_provider.dart';
-import '../../../providers/user_provider.dart';
+import '../../providers/auth_provider.dart';
+import '../palette.dart';
 
 class BookingsPage extends StatefulWidget {
   const BookingsPage({super.key});
@@ -93,7 +94,7 @@ class CancelledView extends StatelessWidget {
   @override
   Widget build(BuildContext context)  {
     final appointmentProvider = Provider.of<AppointmentProvider>(context);
-    final userProvider = Provider.of<UserProvider>(context);
+    final userProvider = Provider.of<AuthProvider>(context);
     Stream<List> getAppointements () async* {
       appointments = await  appointmentProvider.caancelled_appointments ;
 
@@ -131,7 +132,7 @@ class FinishedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserProvider>(context);
+    final userProvider = Provider.of<AuthProvider>(context);
     final appointmentProvider = Provider.of<AppointmentProvider>(context);
     // List appointments = appointmentProvider.appointments;
     Stream<List> getAppointements () async* {
@@ -168,7 +169,7 @@ class UpcomingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appointmentProvider = Provider.of<AppointmentProvider>(context);
-    final userProvider = Provider.of<UserProvider>(context);
+    final userProvider = Provider.of<AuthProvider>(context);
 
     Stream<List> getAppointements () async* {
       appointments = await  appointmentProvider.pending_appointments ;

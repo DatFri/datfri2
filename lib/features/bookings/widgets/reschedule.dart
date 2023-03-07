@@ -1,8 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:dartfri/features/pageImports.dart';
-import 'package:dartfri/features/screens/appointment/pages/review_appointment.dart';
-import 'package:dartfri/features/screens/bookings/bookings_page.dart';
-import 'package:dartfri/features/screens/dashboard/dashboard_page.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -11,9 +8,12 @@ import 'package:provider/provider.dart';
 import 'package:status_alert/status_alert.dart';
 
 import '../../../../providers/appointment_provider.dart';
-import '../../../../providers/user_provider.dart';
+import '../../../providers/auth_provider.dart';
 import '../../appointment/models/appointment.dart';
+import '../../dashboard/pages/dashboard.dart';
+import '../../dashboard/pages/dashboard_page.dart';
 import '../../nearby_places/models/place.dart';
+import '../../palette.dart';
 
 
 
@@ -71,7 +71,7 @@ class _RescheduleState extends State<Reschedule> {
   Widget build(BuildContext context) {
 
     final appointmentProvider = Provider.of<AppointmentProvider>(context);
-    final userProvider = Provider.of<UserProvider>(context);
+    final userProvider = Provider.of<AuthProvider>(context);
     widget.appointment.userId = userProvider.user.uid;
 
 

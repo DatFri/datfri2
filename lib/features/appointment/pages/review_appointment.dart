@@ -1,17 +1,15 @@
-import 'package:dartfri/features/pageImports.dart';
-import 'package:dartfri/features/screens/appointment/models/appointment.dart';
-import 'package:dartfri/features/screens/dashboard/dashboard_page.dart';
-import 'package:dartfri/features/screens/wallet/widgets/phone_input_alert.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:status_alert/status_alert.dart';
 
 import '../../../../providers/appointment_provider.dart';
-import '../../../../providers/user_provider.dart';
+import '../../../providers/auth_provider.dart';
 import '../../nearby_places/models/place.dart';
 import '../../notifications/models/notifications.dart';
 import '../../payment/pages/payment.dart';
+import '../models/appointment.dart';
 
 class ReviewAppointment extends StatelessWidget {
    ReviewAppointment( {Key? key, required this.appointment,required this.place}) : super(key: key);
@@ -21,7 +19,7 @@ final Place place;
   @override
   Widget build(BuildContext context) {
     final appointmentProvider = Provider.of<AppointmentProvider>(context);
-    final user = Provider.of<UserProvider>(context);
+    final user = Provider.of<AuthProvider>(context);
 
     DateTime date = DateTime.parse(appointment.date!);
 

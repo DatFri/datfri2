@@ -1,16 +1,16 @@
-import 'package:dartfri/features/pageImports.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../providers/user_provider.dart';
+import '../../../providers/auth_provider.dart';
+import '../../palette.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context);
+    final user = Provider.of<AuthProvider>(context);
 
     return SafeArea(child: Scaffold(
       body: Container(

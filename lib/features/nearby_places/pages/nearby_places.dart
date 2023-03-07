@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../keys.dart';
 import '../../../../providers/places_provider.dart';
-import '../../../../providers/user_provider.dart';
+import '../../../providers/auth_provider.dart';
 import '../place_widget.dart';
 
 class NearbyPlaces extends StatefulWidget {
@@ -22,7 +22,7 @@ class _NearbyPlacesState extends State<NearbyPlaces> {
   @override
   Widget build(BuildContext context) {
     final places = Provider.of<PlacesProvider>(context);
-    final user = Provider.of<UserProvider>(context);
+    final user = Provider.of<AuthProvider>(context);
 
     return SafeArea(
       child: Scaffold(

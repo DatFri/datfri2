@@ -1,8 +1,9 @@
-import 'package:dartfri/features/screens/nearby_places/models/place.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../features/screens/auth/models/user.dart';
-import '../features/screens/nearby_places/models/offer.dart';
+
+import '../features/auth/models/user.dart';
+import '../features/nearby_places/models/offer.dart';
+import '../features/nearby_places/models/place.dart';
 import '../services/auth_service.dart';
 import '../services/places_service.dart';
 

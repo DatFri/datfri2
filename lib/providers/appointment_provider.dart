@@ -1,13 +1,14 @@
-import 'package:dartfri/providers/user_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:uuid/uuid.dart';
-import '../features/screens/appointment/models/appointment.dart';
-import '../features/screens/auth/models/user.dart';
-import '../features/screens/nearby_places/models/place.dart';
+import '../features/appointment/models/appointment.dart';
+import '../features/auth/models/user.dart';
+import '../features/nearby_places/models/place.dart';
+
 import '../services/appointment_service.dart';
 import '../services/auth_service.dart';
 import '../services/places_service.dart';
+import 'auth_provider.dart';
 
 
 
@@ -21,7 +22,7 @@ class AppointmentProvider extends ChangeNotifier{
   String username ='';
   var _placeService;
   var _appointmentService = AppointmentService();
-  UserProvider userProvider = UserProvider();
+  AuthProvider userProvider = AuthProvider();
   late String appointmentId ;
   List appointments = [];
   Auth auth = Auth();

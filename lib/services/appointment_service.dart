@@ -1,12 +1,13 @@
 
 import 'package:bot_toast/bot_toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartfri/features/screens/dashboard/dashboard_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../features/screens/appointment/models/appointment.dart';
-import '../features/screens/bookings/bookings_page.dart';
+import '../features/appointment/models/appointment.dart';
+import '../features/dashboard/pages/dashboard.dart';
+import '../features/dashboard/pages/dashboard_page.dart';
+
 
 
 class AppointmentService{

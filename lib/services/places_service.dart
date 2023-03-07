@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
-import '../features/screens/auth/models/user.dart';
-import '../features/screens/nearby_places/models/offer.dart';
-import '../features/screens/nearby_places/models/place.dart';
+
+import '../features/auth/models/user.dart';
+import '../features/nearby_places/models/offer.dart';
+import '../features/nearby_places/models/place.dart';
 import 'auth_service.dart';
 
 

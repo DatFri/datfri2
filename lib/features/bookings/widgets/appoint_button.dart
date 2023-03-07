@@ -1,13 +1,14 @@
-import 'package:dartfri/features/pageImports.dart';
-import 'package:dartfri/features/screens/appointment/models/appointment.dart';
-import 'package:dartfri/features/screens/bookings/widgets/reschedule.dart';
-import 'package:dartfri/features/screens/payment/pages/payment.dart';
+
+import 'package:bay/features/bookings/widgets/reschedule.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:status_alert/status_alert.dart';
 
 import '../../../../providers/appointment_provider.dart';
-import '../../../../providers/user_provider.dart';
+import '../../../providers/auth_provider.dart';
+import '../../appointment/models/appointment.dart';
+import '../../palette.dart';
+import '../../payment/pages/payment.dart';
 
 class Appointment_button extends StatelessWidget {
   const Appointment_button({
@@ -19,7 +20,7 @@ class Appointment_button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appointmentProvider = Provider.of<AppointmentProvider>(context);
-    final userProvider = Provider.of<UserProvider>(context);
+    final userProvider = Provider.of<AuthProvider>(context);
     return ElevatedButton(
 
       style: ButtonStyle(

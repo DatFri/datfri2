@@ -15,6 +15,7 @@ import '../../../providers/auth_provider.dart';
 import '../../../providers/places_provider.dart';
 import '../../../services/local_auth_fingerprint.dart';
 import '../../appointment/pages/appointment_page.dart';
+import '../../nearby_places/pages/map.dart';
 import '../../nearby_places/pages/nearby_places.dart';
 import '../../palette.dart';
 import '../../share/pages/share_page.dart';
@@ -31,7 +32,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool isVisible = true;
+  bool isVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +42,10 @@ class _HomePageState extends State<HomePage> {
 
     return SafeArea(
         child: Scaffold(
-          body: Stack(
-              children: [
+          backgroundColor: Color(0xFFF4F4F4),
+          body:
+          // Column(
+          //     children: [
                 // Positioned(
                 //   left: -45,
                 //   top: -45,
@@ -74,9 +77,7 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
                     child: Column(
                       children: [
-                        SizedBox(
-                          height: 20,
-                        ),
+
 
                         Container(
                           padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
@@ -134,9 +135,9 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           padding: EdgeInsets.all(15),
                           width: MediaQuery.of(context).size.width,
-                          height: 190,
+                          height: 155,
                           decoration: BoxDecoration(
-                              color: Palette.primaryDartfri,
+                              color:Palette.primaryDartfri,
                               borderRadius: BorderRadius.circular(20)
                           ),
 
@@ -147,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                               Text('Welcome Back , !',style: TextStyle(fontSize: 22,color: Colors.white),),
                               SizedBox(height: 10,),
                               SizedBox(
-                                height: 70,
+                                height: 50,
                                 child:
                               GridView.builder(
                                 itemCount: BarData.datas.length,
@@ -186,8 +187,8 @@ class _HomePageState extends State<HomePage> {
                                       child: Column(
                                         children: [
                                           Container(
-                                                      height:50,
-                                                width: 50,
+                                                      height:30,
+                                                width: 30,
                                                 padding: EdgeInsets.all(5),
                                                 decoration: BoxDecoration(
                                                   // color: Color(0xFFD3FBFF),
@@ -209,12 +210,13 @@ class _HomePageState extends State<HomePage> {
                                                             // color: HomeData.datas[index].boxColor,
                                                           ),
                                                           child: (index != 2) ? BarData.datas[index].boxIcon :
-    isVisible ?  Icon(Icons.visibility,size: 30,color: Palette.primaryDartfri,):
-     Icon(Icons.visibility_off_outlined,size: 30,color: Palette.primaryDartfri,)),
+    isVisible ?  Icon(Icons.visibility,size: 20,color: Palette.primaryDartfri,):
+     Icon(Icons.visibility_off_outlined,size: 20,color: Palette.primaryDartfri,)),
 
 
 
                                                     )),
+                                          SizedBox(height: 5,),
 
                                           Text(BarData.datas[index].text,style: TextStyle(fontSize: 12,color: Palette.secondaryDartfri),)
 
@@ -226,11 +228,12 @@ class _HomePageState extends State<HomePage> {
                                 },
 
                               ),),
+                              SizedBox(height: 5,),
                               isVisible ? Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.fromLTRB(0, 5, 20, 0),
                                 child: Align(
-                                  alignment: Alignment.center,
-                                    child: Text('Balance : 60000',style: TextStyle(fontSize: 20,color: Palette.secondaryDartfri),)),
+                                  alignment: Alignment.centerRight,
+                                    child: Text('Balance : UGX 60000',style: TextStyle(fontSize: 18,color: Palette.secondaryDartfri),)),
                               ):Container()
 
                             ],
@@ -293,49 +296,57 @@ class _HomePageState extends State<HomePage> {
                           height: 150,
                           width: MediaQuery.of(context).size.width,
                           child:Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text('Our Services',style: TextStyle(fontSize: 15),),
+                              Text('Our Services',style: TextStyle(fontSize: 15,fontWeight: FontWeight.w600),),
                               SizedBox(height: 10,),
                               Expanded(child:
-                              SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width * 0.4,
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)
-                                  ),
-                                  elevation: 8,
-                                  child: Container(
-                                      padding: EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                        // color: Color(0xFFD3FBFF),
-                                        // color: Palette.primaryDartfri,
-                                        // border: Border.all(color: Palette.primaryDartfri,width: 1.5),
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>MapPage()));
+                                },
+                                child: SizedBox(
+                                  height: 70,
+                                  width: MediaQuery.of(context).size.width * 0.4,
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20)
+                                    ),
+                                    elevation: 8,
+                                    child: Container(
+                                        padding: EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          // color: Color(0xFFD3FBFF),
+                                          // color: Palette.primaryDartfri,
+                                          // border: Border.all(color: Palette.primaryDartfri,width: 1.5),
 
-                                      ),
-                                      child: Center(
+                                        ),
+                                        child: Center(
 
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height:50,
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
 
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(100),
-                                                  color: Color(0x76D4D6D6),
+                                                Container(
+                                                  height:50,
 
-                                                  // color: HomeData.datas[index].boxColor,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.circular(100),
+                                                    // color: Color(0x76D4D6D6),
+
+                                                    // color: HomeData.datas[index].boxColor,
+                                                  ),
+                                                  child: SizedBox(
+                                                    height: 70,width: 70,
+                                                      child: Image.asset('assets/clean-car.png')),
                                                 ),
-                                                child: Image.asset('assets/Car wash.png'),
-                                              ),
-                                              SizedBox(height: 20,),
+                                                SizedBox(height: 10,),
 
-                                              Text('Car Wash')
-                                            ],
-                                          ))),
+                                                Text('Car Wash')
+                                              ],
+                                            ))),
+                                  ),
                                 ),
                               ),
                               // GridView.builder(
@@ -401,7 +412,7 @@ class _HomePageState extends State<HomePage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('Popular Car Wash Nearby',style: TextStyle(fontWeight: FontWeight.w600),),
+                            Text('Recently Visited',style: TextStyle(fontWeight: FontWeight.w600),),
                             Row(
                               children: [
                                 TextButton(onPressed: (){
@@ -566,8 +577,8 @@ class _HomePageState extends State<HomePage> {
                     ),
 
                   ),
-                ),
-              ]
+              //   ),
+              // ]
 
           ),
         ));

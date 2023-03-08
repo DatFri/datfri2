@@ -30,8 +30,8 @@ class _DashboardPageState extends State<DashboardPage> {
           children: [
             BookingsPage(),
             HomePage(),
-            WalletPage(),
-            NotificationPage(),
+            // WalletPage(),
+            // NotificationPage(),
             ProfilePage()
           ],
           index: _currentIndex,
@@ -50,32 +50,33 @@ class _DashboardPageState extends State<DashboardPage> {
                 // FontAwesomeIcons.book,
                 color: Colors.black,
               ),
-              label: "Bookings"),
+              label: "History"),
+          BottomNavigationBarItem(
+
+              icon: SizedBox(
+                width: 50,
+                  height: 30,
+                  child: Image.asset('assets/logo_white.png')),
+              label:  "Datfri"),
+          // BottomNavigationBarItem(
+          //     icon: FaIcon(
+          //       Icons.wallet,
+          //       color: Colors.black,
+          //     ),
+          //     label: "Wallet"),
+          // BottomNavigationBarItem(
+          //     icon: FaIcon(
+          //       Icons.notifications,
+          //       color: Colors.black,
+          //     ),
+          //     label: "Notification"),
           BottomNavigationBarItem(
               icon: FaIcon(
-                CupertinoIcons.car_detailed,
-                color: Colors.black,
-              ),
-              label:  "Home"),
-          BottomNavigationBarItem(
-              icon: FaIcon(
-                Icons.wallet,
-                color: Colors.black,
-              ),
-              label: "Wallet"),
-          BottomNavigationBarItem(
-              icon: FaIcon(
-                Icons.notifications,
-                color: Colors.black,
-              ),
-              label: "Notification"),
-          BottomNavigationBarItem(
-              icon: FaIcon(
-                CupertinoIcons.settings_solid,
+                CupertinoIcons.person_crop_circle_fill,
                 // FontAwesomeIcons.,
                 color: Colors.black,
               ),
-              label: "Profile"),
+              label: "Account"),
 
         ],
       ),

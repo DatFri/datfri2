@@ -70,7 +70,8 @@ dependencies:
   google_fonts: ^4.0.3
   alt_sms_autofill: ^1.0.0
   sms_autofill: ^2.3.0
-
+  app_settings:
+  location:
 
 dev_dependencies:
   flutter_test:

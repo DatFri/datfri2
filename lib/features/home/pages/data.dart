@@ -24,8 +24,8 @@ class BarData{
 
     BarData(this.text,this.boxIcon);
     static List<BarData> datas = [
-       BarData('Top Up', Icon(Icons.add_circle_outline_sharp)),
-        BarData('Share', Icon(Icons.share)),
+       BarData('Top Up', Icon(Icons.add,size: 20,)),
+        BarData('Share', Icon(Icons.share,size: 18,)),
         BarData('Balance', Icon(Icons.visibility_off_outlined))
 
         //

@@ -32,6 +32,7 @@ class _LocationPageState extends State<LocationPage> {
 
   Position? _currentPosition;
   bool loading = false;
+
   @override
   Widget build(BuildContext context) {
 
@@ -161,12 +162,12 @@ class _LocationPageState extends State<LocationPage> {
                                   45), // fromHeight use double.infinity as width and 40 is the height
                             ),
                             onPressed: () async {
-
+                              setState(() {
+                                loading = true;
+                              });
 
                                 await _getCurrentPosition();
-                                   setState(() {
-                                     loading = false;
-                                   });
+
                                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>(FirebaseAuth.instance.currentUser != null) ? DashboardPage() :LoginPage()));
 
 

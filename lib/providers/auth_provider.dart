@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../features/auth/models/user.dart';
@@ -20,13 +21,14 @@ class AuthProvider extends ChangeNotifier{
   List appointments =[];
   List notifications =[];
   Auth auth = Auth();
-
+   bool hasPermission = false;
 
   AuthProvider(){
     user = Users();
     _auth = Auth();
     isLoaded = false;
-    getUserDetails();  }
+    getUserDetails();
+  }
 
   void setPhone(String number){
     phoneNumber = number;
@@ -38,6 +40,10 @@ class AuthProvider extends ChangeNotifier{
   }
   void setAddress(String address){
     currentAddress = address;
+    notifyListeners();
+  }
+  void setPermission(bool permission){
+    hasPermission = permission;
     notifyListeners();
   }
 
@@ -100,4 +106,8 @@ class AuthProvider extends ChangeNotifier{
 
 
 
-}}
+}
+
+
+
+}

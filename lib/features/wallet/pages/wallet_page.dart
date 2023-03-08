@@ -27,9 +27,9 @@ class _WalletPageState extends State<WalletPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(children: [
-                  // IconButton(onPressed: (){
-                  //   Navigator.pop(context);
-                  // }, icon:  Icon(Icons.arrow_back,size: 30,color: Palette.primaryDartfri,),),
+                  IconButton(onPressed: (){
+                    Navigator.pop(context);
+                  }, icon:  Icon(Icons.arrow_back,size: 30,color: Palette.primaryDartfri,),),
 
 
                   SizedBox(width: 20,),

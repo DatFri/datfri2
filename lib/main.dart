@@ -243,6 +243,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     if (!serviceEnabled) {
       await AppSettings.openLocationSettings();
     }
+    checkPermission();
   }
 
   Future<void> checkPermission() async {
@@ -250,6 +251,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     setState(() {
 
     });
+    await getLocation();
 
     FlutterNativeSplash.remove();
   }
